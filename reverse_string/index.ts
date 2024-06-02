@@ -1,5 +1,18 @@
-function reverseString(s: string[]) {
-  return s.join("").split("").reverse();
+function reverseString(s: string[]): void {
+  let length = s.length - 1;
+  let i = 0;
+
+  while (length > i) {
+    const x = s[i];
+    s[i] = s[length];
+    s[length] = x;
+    length -= 1;
+    i += 1;
+  }
 }
 
-reverseString(['h', 'e', 'l', 'l', 'o']);
+const test = ['h', 'e', 'l', 'l', 'o'];
+
+reverseString(test);
+
+// ['o', 'l', 'l', 'e', 'h']
