@@ -1,29 +1,17 @@
+use std::borrow::Borrow;
+
 fn main() {}
 
 fn halves_are_alike(s: String) -> bool {
-    let vowels_vec = vec!['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-    let (mut c1, mut c2) = (0, 0);
-
-    let vec = {
+    let (x, y) = {
         let (x, y) = s.split_at(s.len() / 2);
-        x.chars().zip(y.chars()).collect::<Vec<_>>()
+        (x.chars(), y.chars())
     };
 
-    for (x, y) in vec.iter() {
-        if vowels_vec.contains(x) {
-            c1 += 1;
-        }
+    let predicate =
+        |x: &char| -> bool { ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].contains(x) };
 
-        if vowels_vec.contains(y) {
-            c2 += 1;
-        }
-    }
-
-    if c1 == c2 {
-        return true;
-    }
-
-    false
+    x.filter(|ch| predicate(ch)).count() == y.filter(|ch| predicate(ch)).count()
 }
 
 #[cfg(test)]
