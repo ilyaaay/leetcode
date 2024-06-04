@@ -2,17 +2,19 @@ fn main() {}
 
 fn halves_are_alike(s: String) -> bool {
     let vowels_vec = vec!['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-    let (x, y) = s.split_at(s.len() / 2);
     let (mut c1, mut c2) = (0, 0);
 
-    for i in x.chars() {
-        if vowels_vec.contains(&i) {
+    let vec = {
+        let (x, y) = s.split_at(s.len() / 2);
+        x.chars().zip(y.chars()).collect::<Vec<_>>()
+    };
+
+    for (x, y) in vec.iter() {
+        if vowels_vec.contains(x) {
             c1 += 1;
         }
-    }
 
-    for i in y.chars() {
-        if vowels_vec.contains(&i) {
+        if vowels_vec.contains(y) {
             c2 += 1;
         }
     }
