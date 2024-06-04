@@ -1,5 +1,3 @@
-use std::borrow::Borrow;
-
 fn main() {}
 
 fn halves_are_alike(s: String) -> bool {
