@@ -1,15 +1,31 @@
 fn main() {}
 
 fn merge_alternately(word1: String, word2: String) -> String {
-    let word = format!("{word1}{word2}");
+    let mut s = String::new();
+
     let mut left = 0;
-    let mut right = word.len() - 1;
+    let mut right = 0;
 
-    let mut result = String::new();
+    let first = word1.chars().collect::<Vec<char>>();
+    let second = word2.chars().collect::<Vec<char>>();
 
-    while left <= right {}
+    while left == right {
+        s.push(first[left]);
+        s.push(second[right]);
 
-    result
+        left += 1;
+        right += 1;
+
+        if left < right {
+            break;
+        }
+
+        if left > right {
+            break;
+        }
+    }
+
+    s
 }
 
 #[test]
